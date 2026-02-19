@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #09090b;
+  /* Zinc 950 */
+  /* Gray 900 */
+  --primary: #4f46e5;
+  /* Indigo 600 */
+  /* Indigo 600 */
+  --secondary: #6b7280;
+  /* Gray 500 */
+  /* Gray 500 */
+  --accent: #1e293b;
+  /* Slate 800 */
+  /* Slate 800 */
+}
+
+
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
