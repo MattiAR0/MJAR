@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Code, Download } from "lucide-react"
+import { Code, Download } from "lucide-react"
 
 export default function Hero() {
     return (
@@ -55,18 +55,8 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.6 }}
                     className="flex flex-col sm:flex-row items-center justify-center gap-4"
                 >
-                    <Link href="#booking">
-                        <Button size="lg" className="group">
-                            Agendar Cita
-                            <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                    </Link>
                     <Link href="#projects">
-                        <Button
-                            variant="outline"
-                            size="lg"
-                            className="bg-white/5 border-white/10 text-white hover:bg-white/10 hover:text-white hover:border-white/20 transition-all"
-                        >
+                        <Button size="lg" className="group">
                             <Code className="mr-2 w-4 h-4" />
                             Ver mis proyectos
                         </Button>

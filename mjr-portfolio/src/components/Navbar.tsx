@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/components/ui/button" // Reusing cn utility
+import { cn } from "@/components/ui/button"
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false)
@@ -21,7 +20,7 @@ export default function Navbar() {
     const navLinks = [
         { name: "Habilidades", href: "#skills" },
         { name: "Trayectoria", href: "#experience" },
-        { name: "Trabajos", href: "#projects" },
+        { name: "Proyectos", href: "#projects" },
         { name: "Contacto", href: "#contact" },
     ]
 
@@ -37,7 +36,6 @@ export default function Navbar() {
                     MJAR
                 </Link>
 
-                {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-8">
                     {navLinks.map((link) => (
                         <Link
@@ -48,14 +46,8 @@ export default function Navbar() {
                             {link.name}
                         </Link>
                     ))}
-                    <Link href="#booking">
-                        <Button variant="primary" size="sm">
-                            Agendar Cita
-                        </Button>
-                    </Link>
                 </div>
 
-                {/* Mobile Menu Button */}
                 <button
                     className="md:hidden text-white"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -64,7 +56,6 @@ export default function Navbar() {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
             {isMobileMenuOpen && (
                 <div className="absolute top-full left-0 right-0 bg-gray-900/95 backdrop-blur-md border-b border-gray-800 shadow-lg md:hidden p-6 flex flex-col space-y-4">
                     {navLinks.map((link) => (
@@ -77,11 +68,6 @@ export default function Navbar() {
                             {link.name}
                         </Link>
                     ))}
-                    <Link href="#booking" onClick={() => setIsMobileMenuOpen(false)}>
-                        <Button variant="primary" className="w-full">
-                            Agendar Cita
-                        </Button>
-                    </Link>
                 </div>
             )}
         </nav>
