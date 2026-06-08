@@ -66,12 +66,12 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-                <div className="absolute top-full left-0 right-0 bg-white border-b shadow-lg md:hidden p-4 flex flex-col space-y-4">
+                <div className="absolute top-full left-0 right-0 bg-gray-900/95 backdrop-blur-md border-b border-gray-800 shadow-lg md:hidden p-6 flex flex-col space-y-4">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                            className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             {link.name}

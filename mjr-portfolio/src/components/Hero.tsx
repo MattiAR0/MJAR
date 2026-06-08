@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Code } from "lucide-react"
+import { ArrowRight, Code, Download } from "lucide-react"
 
 export default function Hero() {
     return (
@@ -22,7 +22,7 @@ export default function Hero() {
                 >
                     <div className="inline-flex items-center justify-center py-1 px-3 mb-8 bg-gray-800 rounded-full border border-gray-700 shadow-lg">
                         <span className="w-2 h-2 mr-2 bg-green-500 rounded-full animate-pulse" />
-                        <span className="text-sm font-medium text-gray-300">Disponible para nuevos proyectos</span>
+                        <span className="text-sm font-medium text-gray-300">Disponible para incorporaci&oacute;n inmediata</span>
                     </div>
                 </motion.div>
 
@@ -42,10 +42,10 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed"
                 >
-                    Soy <span className="font-semibold text-white">Matti Ahola Rivas</span>, Desarrollador de Aplicaciones Web Multiplataforma y Full Stack.
+                    Soy <span className="font-semibold text-white">Matti Ahola Rivas</span>, Desarrollador Full Stack con formaci&oacute;n en DAM y DAW.
                     <br /><br className="hidden md:block" />
                     <span className="text-lg text-gray-400 block max-w-2xl mx-auto">
-                        Me caracterizo por ser competitivo y autodidacta, con un fuerte interés en arquitectura moderna, despliegue automatizado e IA.
+                        Competitivo y autodidacta, construyo aplicaciones completas con TypeScript, Angular, Node.js y Docker. Experiencia real en entornos profesionales con metodolog&iacute;as &aacute;giles.
                     </span>
                 </motion.p>
 
@@ -71,6 +71,16 @@ export default function Hero() {
                             Ver mis proyectos
                         </Button>
                     </Link>
+                    <a href="/cv.pdf" download>
+                        <Button
+                            variant="outline"
+                            size="lg"
+                            className="bg-white/5 border-white/10 text-white hover:bg-white/10 hover:text-white hover:border-white/20 transition-all"
+                        >
+                            <Download className="mr-2 w-4 h-4" />
+                            Descargar CV
+                        </Button>
+                    </a>
                 </motion.div>
             </div>
         </section>

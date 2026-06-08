@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MJAR Portfolio — Matti Ahola Rivas
 
-## Getting Started
+Portfolio personal construido con **Next.js 14**, **Tailwind CSS** y **Framer Motion**.
 
-First, run the development server:
+**[Ver en produccion](https://mjr-portfolio-blush.vercel.app)**
+
+## Stack
+
+| Capa | Tecnologia |
+|------|-----------|
+| Framework | Next.js 14 (App Router) |
+| Estilos | Tailwind CSS 3 |
+| Animaciones | Framer Motion |
+| Formulario | Formspree |
+| Agenda | Cal.com Embed |
+| Tipografia | Geist (local font) |
+| Despliegue | Vercel |
+
+## Secciones
+
+- **Hero** con estado de disponibilidad y boton de CV.
+- **Habilidades Tecnicas** agrupadas por categoria.
+- **Trayectoria** profesional y academica (timeline).
+- **Proyectos Destacados** con capturas, tags y badges de estado.
+- **Agendar Cita** con Cal.com embebido.
+- **Contacto** con formulario (Formspree) y datos de contacto.
+
+## Desarrollo local
 
 ```bash
+cd mjr-portfolio
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build de produccion
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Docker
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+docker compose up --build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Estructura
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+mjr-portfolio/
+  src/
+    app/
+      layout.tsx        # Metadata, SEO, Open Graph
+      page.tsx           # Composicion de secciones
+      globals.css        # Variables CSS y estilos base
+    components/
+      Hero.tsx           # Presentacion y CTA
+      Skills.tsx         # Stack tecnico
+      Experience.tsx     # Trayectoria profesional
+      Projects.tsx       # Proyectos destacados
+      Booking.tsx        # Cal.com embed
+      Contact.tsx        # Formulario y footer
+      Navbar.tsx         # Navegacion sticky
+      ui/button.tsx      # Componente base Button
+  public/
+    projects/            # Capturas de proyectos
+    og-image.svg         # Open Graph preview
+    cv.pdf               # CV descargable (anade el tuyo)
+```
 
-## Deploy on Vercel
+## Notas
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Coloca tu CV en `public/cv.pdf` para que el boton de descarga funcione.
+- La URL de Vercel se configurara tras el primer despliegue.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Licencia
+
+Uso personal. Creado por Matti Ahola Rivas.

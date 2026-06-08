@@ -24,8 +24,7 @@ export default function Contact() {
                         >
                             <h2 className="text-3xl md:text-4xl font-bold mb-6">Hablemos.</h2>
                             <p className="text-gray-400 mb-8 text-lg leading-relaxed max-w-md">
-                                Estoy disponible para proyectos freelance y consultoría técnica.
-                                Si buscas una solución robusta y moderna, contáctame.
+                                Busco mi primera oportunidad profesional como desarrollador. Tambi&eacute;n estoy abierto a colaboraciones freelance y consultor&iacute;a t&eacute;cnica.
                             </p>
 
                             <div className="space-y-4">
