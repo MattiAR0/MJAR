@@ -2,74 +2,80 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Code, Download } from "lucide-react"
+import { ArrowDown, Download } from "lucide-react"
 
 export default function Hero() {
     return (
-        <section id="hero" className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden bg-gray-900 text-white">
-            {/* Dynamic Background */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl -z-10 pointer-events-none">
-                <div className="absolute top-[10%] left-[10%] w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute bottom-[20%] right-[10%] w-[30rem] h-[30rem] bg-secondary/20 rounded-full blur-3xl" />
+        <section
+            id="hero"
+            className="min-h-[80vh] flex items-center pt-24 pb-16 relative overflow-hidden"
+        >
+            <div className="absolute inset-0 -z-10 pointer-events-none">
+                <div className="absolute top-[15%] left-[5%] w-80 h-80 bg-primary/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[10%] right-[10%] w-96 h-96 bg-indigo-700/8 rounded-full blur-[140px]" />
             </div>
 
-            <div className="container mx-auto px-6 text-center z-10">
+            <div className="container mx-auto px-6 max-w-5xl">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
+                    className="mb-6"
                 >
-                    <div className="inline-flex items-center justify-center py-1 px-3 mb-8 bg-gray-800 rounded-full border border-gray-700 shadow-lg">
-                        <span className="w-2 h-2 mr-2 bg-green-500 rounded-full animate-pulse" />
-                        <span className="text-sm font-medium text-gray-300">Disponible para incorporaci&oacute;n inmediata</span>
-                    </div>
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-800/80 border border-zinc-700/60 text-sm text-zinc-300">
+                        <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                        Disponible para incorporación inmediata
+                    </span>
                 </motion.div>
 
                 <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6"
+                    transition={{ duration: 0.5, delay: 0.15 }}
+                    className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-zinc-100 leading-[1.1] mb-6"
                 >
-                    Creando soluciones eficientes <br className="hidden md:block" />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">y código limpio.</span>
+                    Matti Ahola Rivas
                 </motion.h1>
 
                 <motion.p
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-4"
+                >
+                    Desarrollador Full Stack con formación en DAM y DAW.
+                    Construyo aplicaciones completas con TypeScript, Angular, Node.js y Docker.
+                </motion.p>
+
+                <motion.p
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
-                    className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed"
+                    className="text-base text-zinc-500 max-w-2xl leading-relaxed mb-10"
                 >
-                    Soy <span className="font-semibold text-white">Matti Ahola Rivas</span>, Desarrollador Full Stack con formaci&oacute;n en DAM y DAW.
-                    <br /><br className="hidden md:block" />
-                    <span className="text-lg text-gray-400 block max-w-2xl mx-auto">
-                        Competitivo y autodidacta, construyo aplicaciones completas con TypeScript, Angular, Node.js y Docker. Experiencia real en entornos profesionales con metodolog&iacute;as &aacute;giles.
-                    </span>
+                    Competitivo y autodidacta, con experiencia real en entornos profesionales y metodologías ágiles.
                 </motion.p>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className="flex flex-col sm:flex-row items-start gap-4"
                 >
-                    <Link href="#projects">
-                        <Button size="lg" className="group">
-                            <Code className="mr-2 w-4 h-4" />
-                            Ver mis proyectos
-                        </Button>
+                    <Link
+                        href="#projects"
+                        className="group inline-flex h-12 items-center justify-center rounded-md bg-primary px-8 text-lg font-medium text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                        <ArrowDown className="mr-2 w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+                        Ver proyectos
                     </Link>
-                    <a href="/cv.pdf" download>
-                        <Button
-                            variant="outline"
-                            size="lg"
-                            className="bg-white/5 border-white/10 text-white hover:bg-white/10 hover:text-white hover:border-white/20 transition-all"
-                        >
-                            <Download className="mr-2 w-4 h-4" />
-                            Descargar CV
-                        </Button>
+                    <a
+                        href="/cv.pdf"
+                        download
+                        className="inline-flex h-12 items-center justify-center rounded-md border border-zinc-700 px-8 text-lg font-medium text-zinc-300 transition-all hover:border-zinc-600 hover:bg-zinc-800 hover:text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                        <Download className="mr-2 w-4 h-4" />
+                        Descargar CV
                     </a>
                 </motion.div>
             </div>

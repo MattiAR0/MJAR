@@ -62,8 +62,7 @@ mjr-portfolio/
       Skills.tsx         # Stack tecnico
       Experience.tsx     # Trayectoria profesional
       Projects.tsx       # Proyectos destacados
-      Booking.tsx        # Cal.com embed
-      Contact.tsx        # Formulario y footer
+      Contact.tsx        # Canales de contacto y footer
       Navbar.tsx         # Navegacion sticky
       ui/button.tsx      # Componente base Button
   public/

@@ -3,11 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #09090b;
-  --primary: #4f46e5;
-  --secondary: #6b7280;
-  --accent: #1e293b;
+  --background: #0a0a0b;
+  --foreground: #e4e4e7;
+  --primary: #6366f1;
+  --secondary: #a1a1aa;
+  --accent: #18181b;
+  --surface: #111113;
+  --border: #27272a;
+  --muted: #71717a;
 }
 
 body {
@@ -17,6 +20,11 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: #fff;
 }
 
 @layer utilities {

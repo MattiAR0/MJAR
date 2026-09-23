@@ -18,9 +18,9 @@ export default function Navbar() {
     }, [])
 
     const navLinks = [
-        { name: "Habilidades", href: "#skills" },
-        { name: "Trayectoria", href: "#experience" },
         { name: "Proyectos", href: "#projects" },
+        { name: "Stack", href: "#skills" },
+        { name: "Trayectoria", href: "#experience" },
         { name: "Contacto", href: "#contact" },
     ]
 
@@ -28,11 +28,16 @@ export default function Navbar() {
         <nav
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                isScrolled ? "bg-gray-900/90 backdrop-blur-md shadow-sm py-4 border-b border-gray-800" : "bg-transparent py-6"
+                isScrolled
+                    ? "bg-[#0a0a0b]/90 backdrop-blur-md border-b border-zinc-800/60 py-4"
+                    : "bg-transparent py-6"
             )}
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
-                <Link href="/" className="text-xl font-bold tracking-tight text-white hover:text-primary transition-colors">
+                <Link
+                    href="/"
+                    className="text-lg font-bold tracking-widest uppercase text-zinc-100 hover:text-primary transition-colors"
+                >
                     MJAR
                 </Link>
 
@@ -41,7 +46,7 @@ export default function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                            className="text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors"
                         >
                             {link.name}
                         </Link>
@@ -49,20 +54,21 @@ export default function Navbar() {
                 </div>
 
                 <button
-                    className="md:hidden text-white"
+                    className="md:hidden text-zinc-200"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label="Menú"
                 >
                     {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
 
             {isMobileMenuOpen && (
-                <div className="absolute top-full left-0 right-0 bg-gray-900/95 backdrop-blur-md border-b border-gray-800 shadow-lg md:hidden p-6 flex flex-col space-y-4">
+                <div className="absolute top-full left-0 right-0 bg-[#0a0a0b]/95 backdrop-blur-md border-b border-zinc-800/60 md:hidden p-6 flex flex-col space-y-4">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                            className="text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             {link.name}

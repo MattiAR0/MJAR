@@ -4,70 +4,151 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Github, ExternalLink, Lock } from "lucide-react"
 
-const projects = [
-    {
-        title: "PremadeGG",
-        description:
-            "Plataforma LFG para Valorant con sistema de reputación (Karma), matchmaking por rol/rango, mensajería en tiempo real, gestión de equipos e integración con la API de Riot Games. Proyecto final de grado.",
-        tags: ["Angular", "Express", "MongoDB", "JWT", "Riot API", "Docker"],
-        accentColor: "from-indigo-500 to-violet-600",
-        borderColor: "border-indigo-500/40",
-        link: "https://github.com/MattiAR0/premade-gg",
-        liveLink: "https://premade-gg.vercel.app/",
-        image: "/projects/premadegg.png",
-        status: "live" as const,
-    },
+const featured = {
+    title: "PremadeGG",
+    description:
+        "Plataforma LFG para Valorant con sistema de reputación (Karma), matchmaking por rol/rango, mensajería en tiempo real, gestión de equipos e integración con la API de Riot Games. Proyecto final de grado.",
+    tags: ["Angular", "Express", "MongoDB", "JWT", "Riot API", "Docker"],
+    link: "https://github.com/MattiAR0/premade-gg",
+    liveLink: "https://premade-gg.vercel.app/",
+    image: "/projects/premadegg.png",
+    status: "live" as const,
+}
+
+const secondary = [
     {
         title: "FreelanceBoard",
         description:
             "Plataforma fullstack para conectar freelancers con clientes. Monorepo TypeScript con autenticación JWT, ORM Prisma, validación Zod, subida de imágenes a Cloudinary y base de datos PostgreSQL.",
         tags: ["TypeScript", "Express", "Prisma", "PostgreSQL", "Zod", "Docker"],
-        accentColor: "from-emerald-500 to-teal-600",
-        borderColor: "border-emerald-500/40",
         link: "https://github.com/MattiAR0/FreelanceBoard",
         liveLink: null,
         image: "/projects/freelanceboard.svg",
         status: "code" as const,
+        accentColor: "from-emerald-600 to-teal-700",
     },
     {
         title: "ClutchData",
         description:
             "Herramienta de análisis de datos para eSports. Procesa métricas de partidas para ofrecer estadísticas detalladas, rankings y visualización de rendimiento de jugadores.",
         tags: ["PHP", "MySQL", "JavaScript", "HTML/CSS", "REST API"],
-        accentColor: "from-amber-500 to-orange-600",
-        borderColor: "border-amber-500/40",
         link: null,
         liveLink: null,
         image: "/projects/clutchdata.svg",
         status: "private" as const,
+        accentColor: "from-amber-600 to-orange-700",
     },
 ]
 
 const statusConfig = {
-    live: { label: "Live", className: "bg-green-500/20 text-green-400 border-green-500/30" },
-    code: { label: "Open Source", className: "bg-blue-500/20 text-blue-400 border-blue-500/30" },
-    private: { label: "Privado", className: "bg-amber-500/20 text-amber-400 border-amber-500/30" },
+    live: { label: "Live", className: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30" },
+    code: { label: "Open Source", className: "bg-blue-500/15 text-blue-400 border-blue-500/30" },
+    private: { label: "Privado", className: "bg-amber-500/15 text-amber-400 border-amber-500/30" },
+}
+
+function ProjectLinks({ link, liveLink }: { link: string | null; liveLink: string | null }) {
+    return (
+        <div className="flex items-center gap-5">
+            {link ? (
+                <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors"
+                >
+                    <Github className="w-4 h-4 mr-1.5" /> Código
+                </a>
+            ) : (
+                <span className="flex items-center text-sm font-medium text-zinc-600">
+                    <Lock className="w-4 h-4 mr-1.5" /> Repositorio privado
+                </span>
+            )}
+            {liveLink && (
+                <a
+                    href={liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors"
+                >
+                    <ExternalLink className="w-4 h-4 mr-1.5" /> Demo en vivo
+                </a>
+            )}
+        </div>
+    )
 }
 
 export default function Projects() {
+    const featuredBadge = statusConfig[featured.status]
+
     return (
-        <section id="projects" className="py-24 bg-gray-900 text-white">
-            <div className="container mx-auto px-6">
+        <section id="projects" className="py-24 border-t border-zinc-800/60">
+            <div className="container mx-auto px-6 max-w-6xl">
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mb-16"
+                >
+                    <h2 className="text-3xl md:text-5xl font-bold text-zinc-100 mb-4">
+                        Proyectos Destacados
+                    </h2>
+                    <p className="text-zinc-500 max-w-xl text-lg">
+                        Aplicaciones completas con arquitecturas modernas, buenas prácticas y despliegue profesional.
+                    </p>
+                </motion.div>
+
+                {/* Featured — PremadeGG */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="text-center mb-16"
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="group relative rounded-2xl border border-zinc-800/80 bg-surface overflow-hidden mb-12 hover:border-primary/40 transition-colors duration-300"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Proyectos Destacados</h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto">
-                        Aplicaciones completas donde he aplicado arquitecturas modernas, buenas prácticas y despliegue profesional.
-                    </p>
+                    <div className="grid grid-cols-1 lg:grid-cols-2">
+                        <div className="relative aspect-[16/10] lg:aspect-auto overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-violet-700 opacity-80" />
+                            <Image
+                                src={featured.image}
+                                alt={`Screenshot de ${featured.title}`}
+                                fill
+                                className="object-cover object-top mix-blend-overlay opacity-60 group-hover:scale-[1.03] transition-transform duration-700"
+                            />
+                            <div className="absolute top-4 left-4">
+                                <span className={`px-2.5 py-1 text-xs font-semibold rounded-full border ${featuredBadge.className}`}>
+                                    {featuredBadge.label}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="p-8 lg:p-10 flex flex-col justify-center">
+                            <h3 className="text-2xl md:text-3xl font-bold text-zinc-100 mb-3 group-hover:text-primary transition-colors">
+                                {featured.title}
+                            </h3>
+                            <p className="text-zinc-400 leading-relaxed mb-6">
+                                {featured.description}
+                            </p>
+
+                            <div className="flex flex-wrap gap-2 mb-6">
+                                {featured.tags.map((tag) => (
+                                    <span
+                                        key={tag}
+                                        className="px-2.5 py-1 text-xs font-medium bg-zinc-800 text-zinc-300 rounded-md border border-zinc-700/50"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <ProjectLinks link={featured.link} liveLink={featured.liveLink} />
+                        </div>
+                    </div>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    {projects.map((project, index) => {
+                {/* Secondary projects */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {secondary.map((project, index) => {
                         const badge = statusConfig[project.status]
                         return (
                             <motion.div
@@ -76,9 +157,9 @@ export default function Projects() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className={`group bg-gray-800 rounded-xl overflow-hidden border ${project.borderColor} hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 flex flex-col`}
+                                className="group rounded-xl border border-zinc-800/80 bg-surface overflow-hidden hover:border-zinc-700 transition-colors duration-300 flex flex-col"
                             >
-                                <div className="relative h-48 overflow-hidden">
+                                <div className="relative h-44 overflow-hidden">
                                     <div className={`absolute inset-0 bg-gradient-to-br ${project.accentColor} opacity-80`} />
                                     <Image
                                         src={project.image}
@@ -94,10 +175,10 @@ export default function Projects() {
                                 </div>
 
                                 <div className="p-6 flex flex-col flex-1">
-                                    <h3 className="text-xl font-bold mb-2 text-white group-hover:text-indigo-400 transition-colors">
+                                    <h3 className="text-xl font-bold mb-2 text-zinc-100 group-hover:text-primary transition-colors">
                                         {project.title}
                                     </h3>
-                                    <p className="text-gray-400 mb-4 text-sm leading-relaxed flex-1">
+                                    <p className="text-zinc-400 mb-4 text-sm leading-relaxed flex-1">
                                         {project.description}
                                     </p>
 
@@ -105,38 +186,15 @@ export default function Projects() {
                                         {project.tags.map((tag) => (
                                             <span
                                                 key={tag}
-                                                className="px-2 py-0.5 text-xs font-medium bg-white/10 text-gray-300 rounded-md"
+                                                className="px-2 py-0.5 text-xs font-medium bg-zinc-800 text-zinc-400 rounded-md"
                                             >
                                                 {tag}
                                             </span>
                                         ))}
                                     </div>
 
-                                    <div className="flex items-center gap-4 mt-auto pt-4 border-t border-gray-700/50">
-                                        {project.link ? (
-                                            <a
-                                                href={project.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center text-sm font-medium text-gray-400 hover:text-white transition-colors"
-                                            >
-                                                <Github className="w-4 h-4 mr-1.5" /> Código
-                                            </a>
-                                        ) : (
-                                            <span className="flex items-center text-sm font-medium text-gray-600">
-                                                <Lock className="w-4 h-4 mr-1.5" /> Repositorio privado
-                                            </span>
-                                        )}
-                                        {project.liveLink && (
-                                            <a
-                                                href={project.liveLink}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center text-sm font-medium text-gray-400 hover:text-white transition-colors"
-                                            >
-                                                <ExternalLink className="w-4 h-4 mr-1.5" /> Demo en vivo
-                                            </a>
-                                        )}
+                                    <div className="pt-4 border-t border-zinc-800/60">
+                                        <ProjectLinks link={project.link} liveLink={project.liveLink} />
                                     </div>
                                 </div>
                             </motion.div>
