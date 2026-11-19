@@ -1,53 +1,86 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { Code2, Layers, Server } from "lucide-react"
+import SectionHeader from "@/components/SectionHeader"
+import { cn } from "@/components/ui/button"
 
-const skills = {
-    "Lenguajes & Core": ["Java", "JavaScript", "Go", "SQL", "PHP", "C#"],
-    "Web & Frameworks": ["Angular", "HTML5", "CSS3", "Node.js", "Tailwind CSS"],
-    "Herramientas & DevOps": ["Git/GitHub", "Docker", "Coolify", "PostgreSQL", "SQL Server"],
-}
+const groups = [
+    {
+        title: "Lenguajes & Core",
+        icon: Code2,
+        note: "Base sólida en tipado fuerte y backend.",
+        items: ["Java", "JavaScript", "TypeScript", "Go", "SQL", "PHP", "C#"],
+        span: "md:col-span-7",
+    },
+    {
+        title: "Web & Frameworks",
+        icon: Layers,
+        note: "Interfaces y APIs de principio a fin.",
+        items: ["Angular", "Node.js", "Express", "Tailwind CSS", "HTML5", "CSS3"],
+        span: "md:col-span-5",
+    },
+    {
+        title: "Herramientas & DevOps",
+        icon: Server,
+        note: "Del commit al contenedor en producción.",
+        items: ["Git / GitHub", "Docker", "Coolify", "PostgreSQL", "MongoDB", "SQL Server", "Vercel"],
+        span: "md:col-span-12",
+    },
+]
+
+const ease = [0.22, 1, 0.36, 1] as const
 
 export default function Skills() {
     return (
-        <section id="skills" className="py-24 border-t border-zinc-800/60">
-            <div className="container mx-auto px-6 max-w-5xl">
-                <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="mb-14"
-                >
-                    <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 mb-3">
-                        Stack Técnico
-                    </h2>
-                    <p className="text-zinc-500 max-w-xl">
-                        Tecnologías que utilizo para construir soluciones robustas y escalables.
-                    </p>
-                </motion.div>
+        <section id="skills" className="relative py-28 md:py-36 border-t border-border">
+            <div className="container mx-auto px-6 max-w-6xl">
+                <SectionHeader
+                    index="02"
+                    label="Stack"
+                    title={
+                        <>
+                            Herramientas que{" "}
+                            <span className="font-serif-display italic text-primary">domino</span>
+                        </>
+                    }
+                    description="Tecnologías con las que construyo soluciones robustas, mantenibles y listas para escalar."
+                />
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {Object.entries(skills).map(([category, items], index) => (
+                <div className="grid md:grid-cols-12 gap-4">
+                    {groups.map((group, index) => (
                         <motion.div
-                            key={category}
-                            initial={{ opacity: 0, y: 16 }}
+                            key={group.title}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="rounded-xl p-6 bg-surface border border-zinc-800/80 hover:border-zinc-700 transition-colors"
+                            viewport={{ once: true, margin: "-60px" }}
+                            transition={{ duration: 0.7, ease, delay: index * 0.08 }}
+                            className={cn(
+                                "group relative rounded-[24px] border border-border bg-surface p-7 md:p-8 overflow-hidden transition-colors hover:border-white/15",
+                                group.span
+                            )}
                         >
-                            <h3 className="text-base font-bold mb-5 text-primary">{category}</h3>
-                            <div className="flex flex-wrap gap-2">
-                                {items.map((skill) => (
-                                    <span
+                            <div className="flex items-start justify-between mb-8">
+                                <div>
+                                    <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-foreground mb-1.5">
+                                        {group.title}
+                                    </h3>
+                                    <p className="text-sm text-muted">{group.note}</p>
+                                </div>
+                                <span className="grid place-items-center w-11 h-11 rounded-xl border border-white/10 bg-white/[0.03] text-primary transition-colors group-hover:bg-primary group-hover:text-primary-ink">
+                                    <group.icon className="w-5 h-5" />
+                                </span>
+                            </div>
+                            <ul className="flex flex-wrap gap-2">
+                                {group.items.map((skill) => (
+                                    <li
                                         key={skill}
-                                        className="px-3 py-1 text-sm font-medium bg-zinc-800 rounded-full text-zinc-300 border border-zinc-700/40"
+                                        className="px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.03] text-sm font-medium text-foreground/90 transition-colors hover:border-primary/50 hover:text-primary"
                                     >
                                         {skill}
-                                    </span>
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
                         </motion.div>
                     ))}
                 </div>

@@ -1,97 +1,114 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Briefcase, GraduationCap } from "lucide-react"
+import SectionHeader from "@/components/SectionHeader"
+
+type Entry = {
+    type: "Experiencia" | "Formación"
+    period: string
+    title: string
+    org: string
+    place?: string
+    points?: string[]
+    current?: boolean
+}
+
+const entries: Entry[] = [
+    {
+        type: "Formación",
+        period: "2025 — Actualidad",
+        title: "Desarrollo de Aplicaciones Web (DAW)",
+        org: "Instituto de Cheste",
+        current: true,
+    },
+    {
+        type: "Experiencia",
+        period: "Mar 2025 — Jun 2025",
+        title: "Desarrollador Junior (Prácticas)",
+        org: "Proyectos Informáticos Levante S.L.",
+        place: "Valencia",
+        points: [
+            "Desarrollo y mantenimiento de proyectos internos.",
+            "Automatización de procesos mediante scripts y herramientas DevOps.",
+            "Redacción de documentación técnica detallada.",
+            "Metodologías ágiles (Scrum / Kanban) en el día a día del equipo.",
+        ],
+    },
+    {
+        type: "Formación",
+        period: "2022 — 2025",
+        title: "Desarrollo de Aplicaciones Multiplataforma (DAM)",
+        org: "Instituto de Cheste",
+    },
+]
+
+const ease = [0.22, 1, 0.36, 1] as const
 
 export default function Experience() {
     return (
-        <section id="experience" className="py-24 border-t border-zinc-800/60">
-            <div className="container mx-auto px-6 max-w-5xl">
-                <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="mb-14"
-                >
-                    <h2 className="text-3xl md:text-4xl font-bold text-zinc-100 mb-3">Trayectoria</h2>
-                    <p className="text-zinc-500 max-w-xl">
-                        Mi camino profesional y formación académica.
-                    </p>
-                </motion.div>
+        <section id="experience" className="relative py-28 md:py-36 border-t border-border">
+            <div className="container mx-auto px-6 max-w-6xl">
+                <SectionHeader
+                    index="03"
+                    label="Trayectoria"
+                    title={
+                        <>
+                            Experiencia &{" "}
+                            <span className="font-serif-display italic text-primary">formación</span>
+                        </>
+                    }
+                    description="Experiencia real en entornos profesionales y una formación técnica que cubre web, escritorio y móvil."
+                />
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    {/* Experiencia */}
-                    <div>
-                        <div className="flex items-center mb-8">
-                            <div className="p-3 bg-zinc-800 rounded-xl mr-4 border border-zinc-700/50">
-                                <Briefcase className="w-5 h-5 text-primary" />
+                <ol className="border-t border-border">
+                    {entries.map((e, i) => (
+                        <motion.li
+                            key={e.title}
+                            initial={{ opacity: 0, y: 24 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-60px" }}
+                            transition={{ duration: 0.7, ease, delay: i * 0.06 }}
+                            className="group relative grid md:grid-cols-12 gap-4 md:gap-8 py-10 border-b border-border"
+                        >
+                            <span
+                                className="absolute left-0 top-0 h-px w-0 bg-primary transition-all duration-700 group-hover:w-full"
+                                aria-hidden
+                            />
+                            <div className="md:col-span-3 flex md:flex-col gap-3 md:gap-2">
+                                <span className="font-mono text-sm text-foreground">{e.period}</span>
+                                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+                                    {e.type}
+                                </span>
                             </div>
-                            <h3 className="text-xl font-bold text-zinc-100">Experiencia</h3>
-                        </div>
-
-                        <div className="space-y-8 border-l-2 border-zinc-800 ml-4 pl-8 relative">
-                            <motion.div
-                                initial={{ opacity: 0, x: -16 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5 }}
-                                className="relative group"
-                            >
-                                <div className="absolute -left-[41px] top-0 w-5 h-5 bg-zinc-900 border-4 border-zinc-700 rounded-full group-hover:border-primary transition-colors" />
-
-                                <h4 className="text-lg font-bold text-zinc-100">Desarrollador Junior (Prácticas)</h4>
-                                <p className="text-primary font-semibold mb-1 text-sm">Proyectos Informáticos Levante S.L.</p>
-                                <p className="text-xs text-zinc-500 mb-4">Marzo 2025 – Junio 2025 | Valencia</p>
-
-                                <ul className="space-y-1.5 text-zinc-400 text-sm leading-relaxed">
-                                    <li>• Desarrollo y mantenimiento de proyectos internos.</li>
-                                    <li>• Automatización de procesos mediante scripts y herramientas DevOps.</li>
-                                    <li>• Redacción de documentación técnica detallada.</li>
-                                    <li>• Aplicación de Metodologías Ágiles (Scrum/Kanban) en el flujo de trabajo.</li>
-                                </ul>
-                            </motion.div>
-                        </div>
-                    </div>
-
-                    {/* Formación */}
-                    <div>
-                        <div className="flex items-center mb-8">
-                            <div className="p-3 bg-zinc-800 rounded-xl mr-4 border border-zinc-700/50">
-                                <GraduationCap className="w-5 h-5 text-primary" />
+                            <div className="md:col-span-9">
+                                <div className="flex flex-wrap items-center gap-3 mb-2">
+                                    <h3 className="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-foreground transition-colors group-hover:text-primary">
+                                        {e.title}
+                                    </h3>
+                                    {e.current && (
+                                        <span className="px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/30 font-mono text-[10px] uppercase tracking-[0.16em] text-primary">
+                                            En curso
+                                        </span>
+                                    )}
+                                </div>
+                                <p className="text-secondary">
+                                    {e.org}
+                                    {e.place && <span className="text-muted"> · {e.place}</span>}
+                                </p>
+                                {e.points && (
+                                    <ul className="mt-6 grid sm:grid-cols-2 gap-x-8 gap-y-3">
+                                        {e.points.map((p) => (
+                                            <li key={p} className="flex gap-3 text-sm leading-relaxed text-secondary">
+                                                <span className="mt-[9px] h-px w-3 bg-primary shrink-0" />
+                                                {p}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </div>
-                            <h3 className="text-xl font-bold text-zinc-100">Formación</h3>
-                        </div>
-
-                        <div className="space-y-8 border-l-2 border-zinc-800 ml-4 pl-8 relative">
-                            <motion.div
-                                initial={{ opacity: 0, x: -16 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5 }}
-                                className="relative group"
-                            >
-                                <div className="absolute -left-[41px] top-0 w-5 h-5 bg-zinc-900 border-4 border-zinc-700 rounded-full group-hover:border-primary transition-colors" />
-                                <h4 className="text-lg font-bold text-zinc-100">Desarrollo de Aplicaciones Web (DAW)</h4>
-                                <p className="text-zinc-400 font-medium mb-1 text-sm">Instituto de Cheste</p>
-                                <p className="text-xs text-zinc-500">2025 – Actualidad</p>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, x: -16 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: 0.1 }}
-                                className="relative group"
-                            >
-                                <div className="absolute -left-[41px] top-0 w-5 h-5 bg-zinc-900 border-4 border-zinc-700 rounded-full group-hover:border-primary transition-colors" />
-                                <h4 className="text-lg font-bold text-zinc-100">Desarrollo de Aplicaciones Multiplataforma (DAM)</h4>
-                                <p className="text-zinc-400 font-medium mb-1 text-sm">Instituto de Cheste</p>
-                                <p className="text-xs text-zinc-500">2022 – 2025</p>
-                            </motion.div>
-                        </div>
-                    </div>
-                </div>
+                        </motion.li>
+                    ))}
+                </ol>
             </div>
         </section>
     )
