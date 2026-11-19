@@ -21,7 +21,48 @@ const featured = {
     status: "live" as Status,
 }
 
-const secondary = [
+type SecondaryProject = {
+    title: string
+    kicker: string
+    description: string
+    tags: string[]
+    link: string | null
+    liveLink: string | null
+    status: Status
+    glow: string
+    /** Captura real de la web; si no hay, se usa una portada tipográfica con `glyph` */
+    image?: string
+    domain?: string
+    glyph?: string
+}
+
+const secondary: SecondaryProject[] = [
+    {
+        title: "MC Ahola",
+        kicker: "Portfolio profesional",
+        description:
+            "Portfolio para una ingeniera de puesta en marcha E&I. Bilingüe ES/EN, tema claro y oscuro, mapa interactivo de proyectos por país, páginas de detalle y formulario de contacto con Resend y cabeceras de seguridad.",
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Resend", "i18n"],
+        link: null,
+        liveLink: "https://www.mcahola.com",
+        status: "live",
+        glow: "from-sky-400/40 via-blue-500/10",
+        image: "/projects/mcahola.webp",
+        domain: "mcahola.com",
+    },
+    {
+        title: "v411",
+        kicker: "Web de artista",
+        description:
+            "Web oficial de un artista de trap y reggaetón: lanzamientos, videoclips, conciertos y booking. Estática y sin dependencias, sin cookies: Spotify y YouTube solo se cargan al pulsar.",
+        tags: ["HTML5", "CSS3", "JavaScript", "Vercel", "Sin cookies"],
+        link: null,
+        liveLink: "https://v411eq.vercel.app",
+        status: "live",
+        glow: "from-lime-300/40 via-lime-500/10",
+        image: "/projects/v411.webp",
+        domain: "v411eq.vercel.app",
+    },
     {
         title: "FreelanceBoard",
         kicker: "Monorepo full stack",
@@ -30,7 +71,7 @@ const secondary = [
         tags: ["TypeScript", "Express", "Prisma", "PostgreSQL", "Zod", "Docker"],
         link: "https://github.com/MattiAR0/FreelanceBoard",
         liveLink: null,
-        status: "code" as Status,
+        status: "code",
         glow: "from-emerald-400/40 via-teal-500/10",
         glyph: "{ }",
     },
@@ -42,7 +83,7 @@ const secondary = [
         tags: ["PHP", "MySQL", "JavaScript", "HTML/CSS", "REST API"],
         link: null,
         liveLink: null,
-        status: "private" as Status,
+        status: "private",
         glow: "from-amber-400/40 via-orange-500/10",
         glyph: "▲▼",
     },
@@ -91,7 +132,7 @@ function ProjectLinks({ link, liveLink }: { link: string | null; liveLink: strin
                 </a>
             ) : (
                 <span className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-dashed border-white/10 text-sm text-muted">
-                    <Lock className="w-4 h-4" /> Repositorio privado
+                    <Lock className="w-4 h-4" /> Código privado
                 </span>
             )}
         </div>
@@ -222,33 +263,72 @@ export default function Projects() {
                                 spotlightClass
                             )}
                         >
-                            <div className="relative h-56 overflow-hidden border-b border-border">
-                                <div
-                                    className={cn(
-                                        "absolute -inset-10 bg-gradient-to-br to-transparent blur-2xl transition-transform duration-700 group-hover:scale-110",
-                                        project.glow
-                                    )}
-                                    aria-hidden
-                                />
-                                <div className="absolute inset-0 bg-grid opacity-60" aria-hidden />
-                                <span
-                                    className="absolute -right-4 -bottom-10 font-serif-display italic text-[11rem] leading-none text-white/[0.08] select-none transition-transform duration-700 group-hover:-translate-x-3"
-                                    aria-hidden
-                                >
-                                    {project.glyph}
-                                </span>
-                                <div className="absolute inset-0 p-6 flex flex-col justify-between">
-                                    <div className="flex items-center justify-between">
+                            {project.image ? (
+                                <div className="relative h-64 overflow-hidden border-b border-border">
+                                    <div
+                                        className={cn(
+                                            "absolute -inset-10 bg-gradient-to-br to-transparent blur-2xl transition-transform duration-700 group-hover:scale-110",
+                                            project.glow
+                                        )}
+                                        aria-hidden
+                                    />
+                                    <div className="absolute inset-0 bg-grid opacity-60" aria-hidden />
+                                    <div className="absolute left-6 right-6 top-16 rounded-xl border border-white/10 bg-[#111] shadow-[0_24px_60px_-20px_rgba(0,0,0,0.9)] overflow-hidden transition-transform duration-700 ease-out group-hover:-translate-y-2">
+                                        <div className="flex items-center gap-1.5 px-3 h-7 border-b border-white/[0.06] bg-white/[0.03]">
+                                            <span className="w-2 h-2 rounded-full bg-white/15" />
+                                            <span className="w-2 h-2 rounded-full bg-white/15" />
+                                            <span className="w-2 h-2 rounded-full bg-white/15" />
+                                            <span className="ml-2 font-mono text-[10px] text-muted truncate">{project.domain}</span>
+                                        </div>
+                                        <div className="relative aspect-[16/9]">
+                                            <Image
+                                                src={project.image}
+                                                alt={`Página de inicio de ${project.title}`}
+                                                fill
+                                                sizes="(min-width: 768px) 520px, 100vw"
+                                                className="object-cover object-top"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="absolute inset-x-0 top-0 p-6 flex items-center justify-between">
                                         <StatusBadge status={project.status} />
                                         <span className="font-mono text-xs text-foreground/50">/0{index + 2}</span>
                                     </div>
-                                    <h3 className="text-4xl md:text-[2.75rem] font-semibold tracking-[-0.04em] text-foreground">
-                                        {project.title}
-                                    </h3>
                                 </div>
-                            </div>
+                            ) : (
+                                <div className="relative h-56 overflow-hidden border-b border-border">
+                                    <div
+                                        className={cn(
+                                            "absolute -inset-10 bg-gradient-to-br to-transparent blur-2xl transition-transform duration-700 group-hover:scale-110",
+                                            project.glow
+                                        )}
+                                        aria-hidden
+                                    />
+                                    <div className="absolute inset-0 bg-grid opacity-60" aria-hidden />
+                                    <span
+                                        className="absolute -right-4 -bottom-10 font-serif-display italic text-[11rem] leading-none text-white/[0.08] select-none transition-transform duration-700 group-hover:-translate-x-3"
+                                        aria-hidden
+                                    >
+                                        {project.glyph}
+                                    </span>
+                                    <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                                        <div className="flex items-center justify-between">
+                                            <StatusBadge status={project.status} />
+                                            <span className="font-mono text-xs text-foreground/50">/0{index + 2}</span>
+                                        </div>
+                                        <h3 className="text-4xl md:text-[2.75rem] font-semibold tracking-[-0.04em] text-foreground">
+                                            {project.title}
+                                        </h3>
+                                    </div>
+                                </div>
+                            )}
 
                             <div className="p-7 flex flex-col flex-1">
+                                {project.image && (
+                                    <h3 className="text-3xl md:text-4xl font-semibold tracking-[-0.04em] text-foreground mb-2">
+                                        {project.title}
+                                    </h3>
+                                )}
                                 <span className="font-mono text-xs uppercase tracking-[0.18em] text-muted mb-3">
                                     {project.kicker}
                                 </span>

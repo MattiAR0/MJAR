@@ -17,7 +17,7 @@ const groups = [
         title: "Web & Frameworks",
         icon: Layers,
         note: "Interfaces y APIs de principio a fin.",
-        items: ["Angular", "Node.js", "Express", "Tailwind CSS", "HTML5", "CSS3"],
+        items: ["Angular", "Next.js", "Node.js", "Express", "Tailwind CSS", "HTML5", "CSS3"],
         span: "md:col-span-5",
     },
     {
