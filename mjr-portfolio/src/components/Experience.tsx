@@ -16,10 +16,9 @@ type Entry = {
 const entries: Entry[] = [
     {
         type: "Formación",
-        period: "2025 — Actualidad",
+        period: "2025 — 2026",
         title: "Desarrollo de Aplicaciones Web (DAW)",
         org: "Instituto de Cheste",
-        current: true,
     },
     {
         type: "Experiencia",
