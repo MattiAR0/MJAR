@@ -106,7 +106,7 @@ function handleSpotlight(e: React.MouseEvent<HTMLElement>) {
 }
 
 const spotlightClass =
-    "before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 before:bg-[radial-gradient(500px_circle_at_var(--mx)_var(--my),rgba(200,245,66,0.08),transparent_60%)]"
+    "before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 before:bg-[radial-gradient(500px_circle_at_var(--mx)_var(--my),rgba(255,90,31,0.08),transparent_60%)]"
 
 export default function Projects() {
     return (

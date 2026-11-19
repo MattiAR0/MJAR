@@ -34,7 +34,7 @@ export default function Hero() {
     const my = useMotionValue(-400)
     const sx = useSpring(mx, { stiffness: 120, damping: 20 })
     const sy = useSpring(my, { stiffness: 120, damping: 20 })
-    const spotlight = useMotionTemplate`radial-gradient(420px circle at ${sx}px ${sy}px, rgba(200,245,66,0.13), transparent 70%)`
+    const spotlight = useMotionTemplate`radial-gradient(420px circle at ${sx}px ${sy}px, rgba(255,90,31,0.14), transparent 70%)`
 
     function handleMove(e: React.MouseEvent<HTMLElement>) {
         const rect = ref.current?.getBoundingClientRect()

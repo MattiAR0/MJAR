@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: "var(--primary)",
+        background: "rgb(var(--background-rgb) / <alpha-value>)",
+        foreground: "rgb(var(--foreground-rgb) / <alpha-value>)",
+        primary: "rgb(var(--primary-rgb) / <alpha-value>)",
         "primary-ink": "var(--primary-ink)",
         secondary: "var(--secondary)",
         accent: "var(--accent)",
-        surface: "var(--surface)",
+        surface: "rgb(var(--surface-rgb) / <alpha-value>)",
         "surface-2": "var(--surface-2)",
         border: "var(--border)",
         muted: "var(--muted)",

@@ -24,7 +24,7 @@ const instrumentSerif = Instrument_Serif({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mjr-portfolio-blush.vercel.app";
 
-export const viewport = { themeColor: "#09090a" };
+export const viewport = { themeColor: "#0b0a09" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

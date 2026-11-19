@@ -3,16 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --background: #09090a;
-  --foreground: #ededea;
-  --primary: #c8f542;
-  --primary-ink: #0b0c06;
-  --secondary: #a3a39c;
-  --accent: #151516;
-  --surface: #111112;
-  --surface-2: #18181a;
-  --border: #242426;
-  --muted: #6f6f6a;
+  /* Canales RGB para que Tailwind pueda aplicar opacidad (bg-primary/10) */
+  --background-rgb: 11 10 9;
+  --foreground-rgb: 239 235 230;
+  --primary-rgb: 255 90 31;
+  --surface-rgb: 18 17 16;
+
+  --background: rgb(var(--background-rgb));
+  --foreground: rgb(var(--foreground-rgb));
+  --primary: rgb(var(--primary-rgb));
+  --primary-ink: #1a0700;
+  --secondary: #a8a29b;
+  --accent: #161412;
+  --surface: rgb(var(--surface-rgb));
+  --surface-2: #1a1816;
+  --border: #272421;
+  --muted: #77716a;
 }
 
 html {

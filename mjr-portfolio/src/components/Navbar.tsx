@@ -47,7 +47,7 @@ export default function Navbar() {
                 className={cn(
                     "mx-auto max-w-6xl flex items-center justify-between rounded-full border pl-5 pr-2 py-2 transition-all duration-300",
                     isScrolled || isMobileMenuOpen
-                        ? "bg-[#0d0d0e]/80 backdrop-blur-xl border-white/10 shadow-[0_10px_40px_-12px_rgba(0,0,0,0.7)]"
+                        ? "bg-[#0f0d0c]/80 backdrop-blur-xl border-white/10 shadow-[0_10px_40px_-12px_rgba(0,0,0,0.7)]"
                         : "bg-transparent border-transparent"
                 )}
             >
@@ -110,7 +110,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.2 }}
-                        className="md:hidden mx-auto max-w-6xl mt-2 rounded-3xl border border-white/10 bg-[#0d0d0e]/95 backdrop-blur-xl p-3"
+                        className="md:hidden mx-auto max-w-6xl mt-2 rounded-3xl border border-white/10 bg-[#0f0d0c]/95 backdrop-blur-xl p-3"
                     >
                         {navLinks.map((link, i) => (
                             <Link
