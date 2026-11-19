@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Instrument_Serif } from "next/font/google";
+import Providers from "@/components/Providers";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -12,8 +14,17 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
+  display: "swap",
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mjr-portfolio-blush.vercel.app";
+
+export const viewport = { themeColor: "#0b0a09" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -70,9 +81,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans antialiased`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

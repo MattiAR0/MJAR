@@ -3,32 +3,96 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0b;
-  --foreground: #e4e4e7;
-  --primary: #6366f1;
-  --secondary: #a1a1aa;
-  --accent: #18181b;
-  --surface: #111113;
-  --border: #27272a;
-  --muted: #71717a;
+  /* Canales RGB para que Tailwind pueda aplicar opacidad (bg-primary/10) */
+  --background-rgb: 11 10 9;
+  --foreground-rgb: 239 235 230;
+  --primary-rgb: 255 90 31;
+  --surface-rgb: 18 17 16;
+
+  --background: rgb(var(--background-rgb));
+  --foreground: rgb(var(--foreground-rgb));
+  --primary: rgb(var(--primary-rgb));
+  --primary-ink: #1a0700;
+  --secondary: #a8a29b;
+  --accent: #161412;
+  --surface: rgb(var(--surface-rgb));
+  --surface-2: #1a1816;
+  --border: #272421;
+  --muted: #77716a;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-}
-
-html {
-  scroll-behavior: smooth;
+  font-feature-settings: "ss01", "cv11";
 }
 
 ::selection {
-  background: rgba(99, 102, 241, 0.35);
-  color: #fff;
+  background: var(--primary);
+  color: var(--primary-ink);
+}
+
+/* Grano sutil para dar textura al fondo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .mask-fade-b {
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 40%, transparent 100%);
+  }
+
+  .mask-fade-x {
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  .font-serif-display {
+    font-family: var(--font-instrument-serif), Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
   }
 }
